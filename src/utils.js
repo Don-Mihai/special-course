@@ -1,4 +1,4 @@
-const posts = [
+export const posts = [
     {
         title: 'пост 1',
         url: 'https://admin.redmuseum.church/wp-content/uploads/2020/06/1-61.jpg',
