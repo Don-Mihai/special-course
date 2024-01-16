@@ -4,36 +4,35 @@ import './Posts.scss';
 import { useState } from 'react';
 
 const Posts = () => {
-    const [text, setText] = useState('');
-	const [title, setTitle] = useState('');
+	const [formValues, setFormValues] = useState({ text: '', title: '' });
+
     const [posts, setPosts] = useState([]);
 
     const onChangeText = event => {
-        setText(event.target.value);
+        setFormValues({ text: event.target.value });
     };
 
     const onChangeTitle = event => {
-        setTitle(event.target.value);
+        setFormValues({ title: event.target.value });
     };
 
     const clear = () => {
-        setText('');
-        setTitle('');
+        setFormValues({});
     };
 
     const addPost = () => {
-        setPosts([...posts, { title, text }]);
+        setPosts([...posts, { title: formValues.title, text: formValues.text }]);
         clear();
     };
 
     return (
         <div>
-            <input value={text} type="text" onChange={onChangeText} />
-            <input value={title} type="text" onChange={onChangeTitle} />
+            <input value={formValues.text} type="text" onChange={onChangeText} />
+            <input value={formValues.title} type="text" onChange={onChangeTitle} />
             <button onClick={addPost}>Добавить пост</button>
             <button onClick={clear}>Очистить</button>
-            <h2>{text}</h2>
-            <h2>{title}</h2>
+            <h2>{formValues.text}</h2>
+            <h2>{formValues.title}</h2>
 
             {posts.map(post => {
                 return <Post post={post} />;
