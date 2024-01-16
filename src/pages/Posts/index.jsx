@@ -3,21 +3,21 @@ import './Posts.scss';
 // import { posts } from '../../utils.js';
 import { useState } from 'react';
 
+const inititalState = { text: '', title: '' };
+
 const Posts = () => {
-	const [formValues, setFormValues] = useState({ text: '', title: '' });
+    const [formValues, setFormValues] = useState(inititalState);
 
     const [posts, setPosts] = useState([]);
 
-    const onChangeText = event => {
-        setFormValues({ text: event.target.value });
-    };
-
-    const onChangeTitle = event => {
-        setFormValues({ title: event.target.value });
+    const onChange = event => {
+        const key = event.target.name;
+		const value = event.target.value;
+        setFormValues({ ...formValues, [key]: value });
     };
 
     const clear = () => {
-        setFormValues({});
+        setFormValues(inititalState);
     };
 
     const addPost = () => {
@@ -25,10 +25,11 @@ const Posts = () => {
         clear();
     };
 
+    console.log(formValues);
     return (
         <div>
-            <input value={formValues.text} type="text" onChange={onChangeText} />
-            <input value={formValues.title} type="text" onChange={onChangeTitle} />
+            <input value={formValues.text} name="text" type="text" onChange={onChange} />
+            <input value={formValues.title} name="title" type="text" onChange={onChange} />
             <button onClick={addPost}>Добавить пост</button>
             <button onClick={clear}>Очистить</button>
             <h2>{formValues.text}</h2>
