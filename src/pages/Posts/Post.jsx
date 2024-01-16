@@ -3,7 +3,7 @@ const Post = ({ post }) => {
         <div className="item">
             <h2>{post?.title}</h2>
             <img height="100" src={post?.url} alt="" />
-            <button>Кнопка</button>
+            <button>{post?.text}</button>
         </div>
     );
 };
