@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Posts from './pages/Posts';
+import PostsApi from './pages/PostsApi';
 import Home from './pages/Home';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -12,6 +13,10 @@ const routes = createBrowserRouter([
     {
         path: '/posts',
         element: <Posts />,
+    },
+    {
+        path: '/posts-api',
+        element: <PostsApi />,
     },
 ]);
 

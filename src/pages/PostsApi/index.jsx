@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Post from './Post.jsx';
 import './Posts.scss';
 // import { posts } from '../../utils.js';
@@ -12,7 +13,7 @@ const Posts = () => {
 
     const onChange = event => {
         const key = event.target.name;
-		const value = event.target.value;
+        const value = event.target.value;
         setFormValues({ ...formValues, [key]: value });
     };
 
@@ -21,7 +22,7 @@ const Posts = () => {
     };
 
     const addPost = () => {
-        setPosts([...posts, { id: Math.random(), title: formValues.title, text: formValues.text }]);
+        axios.post('https://65a6cd1f74cf4207b4f0d629.mockapi.io/posts', formValues);
         clear();
     };
 
